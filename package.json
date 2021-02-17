@@ -1,0 +1,15 @@
+{
+  "name": "maz.unity.smartevent",
+  "version": "1.0.0",
+  "displayName": "Smart Event",
+  "description": "Send events to all registered objects with to have a target",
+  "unity": "2019.1",
+  "unityRelease": "0f1",
+  "keywords": [
+    "Library",
+    "Event"
+  ],
+  "author": {
+    "name": "MaZy"
+  }
+}
