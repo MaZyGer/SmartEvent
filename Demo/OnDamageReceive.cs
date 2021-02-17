@@ -12,14 +12,16 @@ namespace Maz.Unity.SmartEvent.Demo
 
 		private void OnEnable()
 		{
-			SmartEvent.OnReceiveEvent<DamageEvent>(dmg => OnDamageReceiveEvent.Invoke(dmg));
+			SmartEvent.OnReceiveEvent<DamageEvent>(OnDamage);
 
 		}
 
 		private void OnDisable()
 		{
-			SmartEvent.OnReceiveEventRemove<DamageEvent>(this);
+			SmartEvent.OnReceiveEventRemove<DamageEvent>(OnDamage);
 		}
+
+		void OnDamage(DamageEvent damageEvent) => OnDamageReceiveEvent.Invoke(damageEvent);
 	}
 
     public class DamageEvent 

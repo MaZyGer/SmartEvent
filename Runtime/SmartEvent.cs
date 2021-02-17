@@ -45,7 +45,7 @@ namespace Maz.Unity.SmartEvent
 		/// </summary>
 		/// <typeparam name="T"></typeparam>
 		/// <param name="action"></param>
-		public static void OnReceiveEvent<T>(Action<T> action) 
+		public static void OnReceiveEvent<T>(Action<T> action)
 		{
 			EventDelegate<T> eventDelegate;
 			if ((eventDelegate = Find<T>(action.Target)) != null)
@@ -100,6 +100,22 @@ namespace Maz.Unity.SmartEvent
 			delegates.Remove(eventDelegate);
 		}
 
+		public static void OnReceiveEventRemove<T>(Action<T> action)
+		{
+			SmartDelegate eventDelegate;
+			if ((eventDelegate = Find<T>(action.Target)) == null)
+			{
+				return;
+			}
+
+			if (!delegates.Contains(eventDelegate))
+			{
+				return;
+			}
+
+			delegates.Remove(eventDelegate);
+		}
+
 		/// <summary>
 		/// Send to All
 		/// </summary>
@@ -135,7 +151,7 @@ namespace Maz.Unity.SmartEvent
 
 			foreach (var del in delegates)
 			{
-				var genericDel = (EventDelegate<T>)del;
+				var genericDel = del as EventDelegate<T>;
 				if (genericDel == null)
 					continue;
 				else
@@ -152,7 +168,7 @@ namespace Maz.Unity.SmartEvent
 
 			foreach (var del in delegates)
 			{
-				var genericDel = (EventDelegate<T>)del;
+				var genericDel = del as EventDelegate<T>;
 				if (genericDel == null)
 					continue;
 				else
