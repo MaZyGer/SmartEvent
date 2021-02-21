@@ -13,7 +13,7 @@ namespace Maz.Unity.SmartEvent.Demo
 
 		private void OnDisable()
 		{
-			//SmartEvent.OnReceiveEventRemove<DamageEvent>(this);
+			//SmartEvent.OnReceiveEventRemove<DamageEvent>(OnReceiveDamage);
 		}
 
 		public void OnReceiveDamage(DamageEvent damage)
